@@ -21,7 +21,7 @@ SmartTestAI is a comprehensive AI-powered automated testing framework for REST A
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/SmartTestAI.git
+git clone https://github.com/yourusername/SmartTestAI-AI-Test-Automation-Framework.git
 cd SmartTestAI
 ```
 
