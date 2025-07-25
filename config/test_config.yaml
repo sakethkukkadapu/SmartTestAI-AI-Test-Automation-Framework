@@ -1,0 +1,72 @@
+# SmartTestAI Configuration File
+
+# API Settings
+api:
+  base_url: "https://api.example.com/v1"
+  timeout: 30  # in seconds
+  max_retries: 3
+  verify_ssl: true
+
+# Authentication
+auth:
+  type: "bearer"  # Options: bearer, basic, api_key, none
+  token: ""  # For bearer token
+  # username: ""  # For basic auth
+  # password: ""  # For basic auth
+  # api_key: ""   # For API key auth
+  # api_key_name: "X-API-Key"  # Header name for API key
+
+# Endpoints
+endpoints:
+  - path: "/login"
+    methods: ["POST"]
+    description: "User authentication"
+  - path: "/users"
+    methods: ["GET", "POST"]
+    description: "User management"
+  - path: "/users/{id}"
+    methods: ["GET", "PUT", "DELETE"]
+    description: "User operations"
+  - path: "/products"
+    methods: ["GET", "POST"]
+    description: "Product management"
+
+# Test Execution
+execution:
+  parallel: true
+  max_workers: 4
+  stop_on_failure: false
+  retries: 2
+
+# Reporting
+reporting:
+  format: ["html", "json"]
+  output_dir: "./reports"
+  include_logs: true
+  include_request_details: true
+
+# Notifications
+notifications:
+  slack:
+    enabled: false
+    webhook_url: ""
+    channel: "#api-testing"
+  email:
+    enabled: false
+    smtp_server: "smtp.example.com"
+    port: 587
+    use_tls: true
+    from_email: "tests@example.com"
+    recipients: ["team@example.com"]
+
+# OpenAI Configuration
+openai:
+  model: "gpt-4"
+  temperature: 0.2
+  max_tokens: 2048
+
+# CI/CD Integration
+ci_cd:
+  enabled: true
+  artifact_path: "./reports"
+  test_command: "python runner.py --all"
