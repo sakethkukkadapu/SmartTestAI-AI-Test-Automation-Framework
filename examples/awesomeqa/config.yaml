@@ -1,0 +1,84 @@
+# AwesomeQA Test Suite Configuration
+# This file contains suite-specific settings that override framework defaults
+
+suite_info:
+  name: "AwesomeQA E-commerce"
+  base_url: "https://awesomeqa.com/ui/"
+  description: "Demo e-commerce site for testing AI-powered automation"
+  version: "1.0.0"
+
+# Browser configuration
+browser:
+  default: "chrome"
+  headless: false
+  window_size: "1920,1080"
+  timeout: 30
+  options:
+    - "--disable-gpu"
+    - "--disable-extensions"
+    - "--no-sandbox"
+
+# AI feature toggles - enable/disable to control costs and behavior
+ai_features:
+  self_healing: true          # Auto-fix broken locators
+  visual_testing: true        # AI-powered image comparison
+  test_generation: true       # Generate test cases from page objects
+  test_analysis: true         # Analyze test results for insights
+
+# AI model and API settings
+ai_settings:
+  model: "models/gemini-2.5-flash-lite"  # Cost-effective model for most operations
+  fallback_models:
+    - "models/gemini-2.0-pro"
+  max_retries: 3
+  initial_retry_delay: 2.0
+  max_retry_delay: 60
+  enable_caching: true        # Cache AI responses to reduce API calls
+  cache_ttl: 3600            # Cache timeout in seconds (1 hour)
+  visual_threshold: 0.9       # Similarity threshold for visual tests (0.0-1.0)
+  temperature: 0.3           # Lower = more consistent, higher = more creative
+  top_p: 0.9
+  max_tokens: 2048
+
+# Test execution settings
+test_execution:
+  parallel: true             # Run tests in parallel
+  max_workers: 4             # Maximum parallel test workers
+  timeout: 300               # Test timeout in seconds
+  retry_failed: false        # Retry failed tests automatically
+  
+# Reporting configuration
+reporting:
+  formats:
+    - "html"
+    - "allure" 
+    - "json"
+  include_screenshots: true
+  include_ai_analysis: true
+  timestamp_format: "%Y%m%d_%H%M%S"
+
+# Logging configuration
+logging:
+  level: "INFO"              # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "awesomeqa_tests.log"
+  console: true
+
+# Page-specific settings
+pages:
+  default_timeout: 10
+  screenshot_on_failure: true
+  auto_scroll: true
+  
+# Test data settings
+test_data:
+  generate_realistic: true   # Use AI to generate realistic test data
+  data_locale: "en_US"      # Locale for generated data
+  seed: 42                  # Seed for reproducible data generation
+
+# Visual testing specific settings
+visual_testing:
+  baseline_directory: "screenshots/baselines/awesomeqa"
+  diff_directory: "screenshots/diffs"
+  highlight_differences: true
+  save_actual_images: true

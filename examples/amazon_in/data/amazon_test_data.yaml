@@ -1,0 +1,74 @@
+# Amazon India Test Data
+# Product searches popular in Indian market
+
+search_terms:
+  electronics:
+    - "iPhone 15"
+    - "Samsung Galaxy S24"
+    - "OnePlus 12"
+    - "MacBook Air"
+    - "iPad"
+    - "JBL earphones"
+    - "Sony headphones"
+  
+  fashion:
+    - "ethnic wear for women"
+    - "branded shirts for men"
+    - "sarees"
+    - "kurta"
+    - "jeans"
+    - "sneakers"
+  
+  books:
+    - "Indian authors"
+    - "competitive exam books"
+    - "self help books"
+    - "fiction bestsellers"
+  
+  home_kitchen:
+    - "pressure cooker"
+    - "mixer grinder"
+    - "water purifier"
+    - "dinner set"
+
+locations:
+  metro_cities:
+    - "Mumbai"
+    - "Delhi"
+    - "Bangalore"
+    - "Chennai"
+    - "Kolkata"
+    - "Hyderabad"
+  
+  tier2_cities:
+    - "Pune"
+    - "Ahmedabad"
+    - "Jaipur"
+    - "Lucknow"
+    - "Indore"
+
+user_profiles:
+  regular_customer:
+    location: "Mumbai"
+    preferred_categories: ["electronics", "books"]
+    prime_member: false
+  
+  prime_customer:
+    location: "Bangalore"  
+    preferred_categories: ["fashion", "home_kitchen"]
+    prime_member: true
+
+# Test scenarios for different user types
+test_scenarios:
+  - name: "Mobile User Shopping"
+    device: "mobile"
+    search_terms: ["smartphone", "mobile cover"]
+    location: "Delhi"
+  
+  - name: "Festival Shopping"
+    search_terms: ["diwali decorations", "ethnic wear", "sweets"]
+    location: "Mumbai"
+    
+  - name: "Tech Enthusiast"
+    search_terms: ["latest gadgets", "gaming laptop", "mechanical keyboard"]
+    location: "Bangalore"

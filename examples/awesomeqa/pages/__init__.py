@@ -1,0 +1,1 @@
+# AwesomeQA page objects package

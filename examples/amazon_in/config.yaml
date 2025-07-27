@@ -1,0 +1,66 @@
+# Amazon India Test Suite Configuration
+# Created from template in < 2 minutes as demonstrated in NEW_ARCHITECTURE_GUIDE.md
+
+suite_info:
+  name: "Amazon India E-commerce"
+  description: "AI-powered testing for Amazon.in shopping and search functionality"
+  base_url: "https://www.amazon.in"
+  version: "1.0.0"
+  team: "QA Engineering"
+
+ai_features:
+  self_healing: true          # Essential for dynamic Amazon pages
+  visual_testing: true        # Compare product images, banners
+  test_generation: true       # Generate tests for new product categories
+  test_analysis: true         # Analyze search and cart behavior
+
+ai_settings:
+  model: "models/gemini-2.5-flash-lite"
+  fallback_models: ["models/gemini-2.0-pro"]
+  enable_caching: true        # Critical for cost control on Amazon
+  cache_ttl: 3600
+  visual_threshold: 0.85      # Slightly lower for Amazon's dynamic content
+  temperature: 0.2            # Conservative for e-commerce precision
+  max_tokens: 1500
+
+browser:
+  default: "chrome"
+  headless: false
+  window_size: "1366,768"     # Common resolution for Indian users
+  timeout: 30
+  wait_strategy: "smart"      # Amazon pages load dynamically
+
+test_execution:
+  parallel: true
+  max_workers: 2              # Conservative for API cost control
+  retry_failed: true
+  retry_count: 2
+  test_data_file: "data/amazon_test_data.yaml"
+
+reporting:
+  formats: ["html", "json"]
+  include_screenshots: true
+  include_ai_insights: true
+  output_dir: "reports"
+
+# Amazon-specific settings
+amazon_settings:
+  default_location: "Mumbai"
+  currency: "INR"
+  language: "English"
+  prime_testing: false        # Enable if testing Prime features
+  categories:
+    - "Electronics"
+    - "Fashion" 
+    - "Books"
+    - "Home & Kitchen"
+
+# Environment overrides
+environments:
+  staging:
+    base_url: "https://staging.amazon.in"
+    timeout: 45
+  
+  mobile:
+    window_size: "375,667"    # iPhone dimensions
+    user_agent: "mobile"

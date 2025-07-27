@@ -1,0 +1,1 @@
+# AwesomeQA tests package
